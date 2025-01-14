@@ -1,0 +1,187 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
+
+public class Main {
+    public static void main(String[] args) {
+        // Create a new frame
+        JFrame frame = new JFrame("File Downloader and Extractor");
+
+        // Set the size of the frame
+        frame.setSize(400, 300);
+        frame.setLayout(new BorderLayout());
+
+        // Specify what happens when the frame is closed
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Create buttons
+        JButton downloadButton = new JButton("Download File");
+        JButton extractButton = new JButton("Extract ZIP");
+
+        // Create progress bars
+        JProgressBar downloadProgressBar = new JProgressBar(0, 100);
+        JProgressBar extractProgressBar = new JProgressBar(0, 100);
+
+        // Panel for buttons
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.add(downloadButton);
+        buttonPanel.add(extractButton);
+
+        // Add button panel and progress bars to the frame
+        frame.add(buttonPanel, BorderLayout.NORTH);
+        frame.add(downloadProgressBar, BorderLayout.CENTER);
+        frame.add(extractProgressBar, BorderLayout.SOUTH);
+
+        // Action listener for download button
+        downloadButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SwingWorker<Void, Integer> worker = new SwingWorker<Void, Integer>() {
+                    @Override
+                    protected Void doInBackground() throws Exception {
+                        String fileUrl = "https://example.com/file.zip"; // Change this URL
+                        String savePath = "downloaded_file.zip";
+
+                        HttpURLConnection httpConn = (HttpURLConnection) new URL(fileUrl).openConnection();
+                        int responseCode = httpConn.getResponseCode();
+
+                        if (responseCode == HttpURLConnection.HTTP_OK) {
+                            int contentLength = httpConn.getContentLength();
+
+                            try (InputStream in = new BufferedInputStream(httpConn.getInputStream());
+                                 FileOutputStream out = new FileOutputStream(savePath)) {
+
+                                byte[] buffer = new byte[1024];
+                                int bytesRead = -1;
+                                long totalBytesRead = 0;
+
+                                while ((bytesRead = in.read(buffer)) != -1) {
+                                    out.write(buffer, 0, bytesRead);
+                                    totalBytesRead += bytesRead;
+
+                                    int progress = (int) (totalBytesRead * 100 / contentLength);
+                                    publish(progress);
+                                }
+
+                                JOptionPane.showMessageDialog(frame, "File Downloaded Successfully!");
+
+                            } catch (Exception ex) {
+                                ex.printStackTrace();
+                                JOptionPane.showMessageDialog(frame, "Error: " + ex.getMessage());
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(frame, "No file to download. Server replied with status: " + responseCode);
+                        }
+                        httpConn.disconnect();
+                        return null;
+                    }
+
+                    @Override
+                    protected void process(java.util.List<Integer> chunks) {
+                        for (int value : chunks) {
+                            downloadProgressBar.setValue(value);
+                        }
+                    }
+
+                    @Override
+                    protected void done() {
+                        downloadButton.setEnabled(true);
+                    }
+                };
+
+                worker.execute();
+                downloadButton.setEnabled(false);
+            }
+        });
+
+        // Action listener for extract button
+        extractButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SwingWorker<Void, Integer> worker = new SwingWorker<Void, Integer>() {
+                    @Override
+                    protected Void doInBackground() throws Exception {
+                        String zipFilePath = "downloaded_file.zip"; // Change this path
+                        String destDir = "extracted_files"; // Change this directory
+
+                        File destDirFile = new File(destDir);
+                        if (!destDirFile.exists()) {
+                            destDirFile.mkdir();
+                        }
+
+                        try (ZipInputStream zipIn = new ZipInputStream(new FileInputStream(zipFilePath))) {
+                            ZipEntry entry;
+                            long totalEntriesSize = 0;
+                            long entriesProcessedSize = 0;
+
+                            // Calculate total size of entries
+                            while ((entry = zipIn.getNextEntry()) != null) {
+                                totalEntriesSize += entry.getSize();
+                            }
+                            zipIn.close();
+
+                            // Extract entries
+                            try (ZipInputStream zipInAgain = new ZipInputStream(new FileInputStream(zipFilePath))) {
+                                while ((entry = zipInAgain.getNextEntry()) != null) {
+                                    String filePath = destDir + File.separator + entry.getName();
+
+                                    if (!entry.isDirectory()) {
+                                        try (BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(filePath))) {
+                                            byte[] buffer = new byte[1024];
+                                            int bytesRead;
+                                            while ((bytesRead = zipInAgain.read(buffer)) != -1) {
+                                                bos.write(buffer, 0, bytesRead);
+                                                entriesProcessedSize += bytesRead;
+
+                                                int progress = (int) (entriesProcessedSize * 100 / totalEntriesSize);
+                                                publish(progress);
+                                            }
+                                        }
+                                    } else {
+                                        new File(filePath).mkdir();
+                                    }
+
+                                    zipInAgain.closeEntry();
+                                }
+
+                                JOptionPane.showMessageDialog(frame, "File Extracted Successfully!");
+
+                            } catch (Exception ex) {
+                                ex.printStackTrace();
+                                JOptionPane.showMessageDialog(frame, "Error: " + ex.getMessage());
+                            }
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                            JOptionPane.showMessageDialog(frame, "Error: " + ex.getMessage());
+                        }
+                        return null;
+                    }
+
+                    @Override
+                    protected void process(java.util.List<Integer> chunks) {
+                        for (int value : chunks) {
+                            extractProgressBar.setValue(value);
+                        }
+                    }
+
+                    @Override
+                    protected void done() {
+                        extractButton.setEnabled(true);
+                    }
+                };
+
+                worker.execute();
+                extractButton.setEnabled(false);
+            }
+        });
+
+        // Make the frame visible
+        frame.setVisible(true);
+    }
+}
