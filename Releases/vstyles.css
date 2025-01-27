@@ -1,18 +1,18 @@
     @font-face {
     font-family: 'mdfont';
-    src: url('../../fonts/segoeuithis.eot'); /* IE9 Compat Modes */
-    src: url('../../fonts/segoeuithis.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-         url('../../fonts/segoeuithis.woff') format('woff'), /* Modern Browsers */
-         url('../../fonts/segoeuithis.ttf')  format('truetype'), /* Safari, Android, iOS */
-         url('../../fonts/segoeuithis.svg#svgFontName') format('svg'); /* Legacy iOS */
+    src: url('../fonts/segoeuithis.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/segoeuithis.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../fonts/segoeuithis.woff') format('woff'), /* Modern Browsers */
+         url('../fonts/segoeuithis.ttf')  format('truetype'), /* Safari, Android, iOS */
+         url('../fonts/segoeuithis.svg#svgFontName') format('svg'); /* Legacy iOS */
     }
     @font-face {
     font-family: 'mdfontbold';
-    src: url('../../fonts/segoeuithibd.eot'); /* IE9 Compat Modes */
-    src: url('../../fonts/segoeuithibd.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-         url('../../fonts/segoeuithibd.woff') format('woff'), /* Modern Browsers */
-         url('../../fonts/segoeuithibd.ttf')  format('truetype'), /* Safari, Android, iOS */
-         url('../../fonts/segoeuithibd.svg#svgFontName') format('svg'); /* Legacy iOS */
+    src: url('../fonts/segoeuithibd.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/segoeuithibd.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../fonts/segoeuithibd.woff') format('woff'), /* Modern Browsers */
+         url('../fonts/segoeuithibd.ttf')  format('truetype'), /* Safari, Android, iOS */
+         url('../fonts/segoeuithibd.svg#svgFontName') format('svg'); /* Legacy iOS */
     }
 
     p, a, {
