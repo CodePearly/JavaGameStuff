@@ -15,7 +15,7 @@
          url('../fonts/segoeuithibd.svg#svgFontName') format('svg'); /* Legacy iOS */
     }
 
-    p, a, {
+    p, a {
       font-size:100%;
       font-family: mdfont;
     }
@@ -42,4 +42,7 @@
     h6 {
       font-size:67%;
       font-family: mdfontbold;
+    }
+    body {
+        background-color: white;
     }
