@@ -12,6 +12,19 @@
 
   <p>It is only a Pong Game</p>
   <footer>
-    <a style="font-size:0.000000000001%;" href="https://github.com/CodePearly/JavaGameStuff/blob/website/Releases/v1.0/original.md?plain=0">origanal md file</a>
+    <button style="font-size:0.001%;" onclick="OpenTwoWin()">origanal md file</button>
+    <button style="font-size:0.001%;" onclick="closeAllWin()">Close all windows</button>
+
+    <script>
+    function OpenTwoWin() {
+      _blanktwo = window.open("https://github.com/CodePearly/JavaGameStuff/blob/website/Releases/v1.0/original.md?plain=0", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=710,width=700,height=400");
+      _blank = window.open("https://github.com/CodePearly/JavaGameStuff/releases/tag/v1.0", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=0,width=700,height=600");
+    }
+    function closeAllWin() {
+      _blank.close();
+      _blanktwo.close();
+    }
+
+    </script>
   </footer>
 </body>
