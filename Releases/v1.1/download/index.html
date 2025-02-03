@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download v1.0</title>
+    <link rel="icon" type="image/png" href="../../../img/OldVersionDownload.png">
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 0;
+            background-color: #1e1e1e;
+            color: #dcdcdc;
+        }
+
+        header {
+            background-color: #007396; /* Java blue */
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ff5722; /* Highlight color */
+        }
+
+        main {
+            padding: 40px 20px;
+            text-align: center;
+            background-color: #2d2d2d;
+            color: #dcdcdc;
+            min-height: 60vh;
+        }
+
+        main h2 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        main p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        section {
+            padding: 40px 20px;
+            background-color: #333;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        footer {
+            background-color: #007396; /* Java blue */
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+        }
+        .download-link {
+            color: #ff5722;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: 2px solid #ff5722;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-link:hover {
+            background-color: #ff5722;
+            color: #fff;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Redirecting to a Download</h1>
+        <nav>
+            <ul>
+                <li><a href="../../../#home">Home</a></li>
+                <li><a href="../../../#about">About</a></li>
+                <li><a href="../../../#releases">Releases</a></li>
+                <li><a href="../../../Games/">Individual Games</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <a name="v1.0">
+            <section>
+                <h2>Downloading...</h2>
+                <a href="https://github.com/CodePearly/JavaGameStuff/releases/download/v1.0/v1.jar" target="_blank" class="download-link">If it does not redirect you please click here</a>
+                <p>Downloading v1.0</p>
+            </section>
+        </a>
+    </main>
+    <footer>
+        <p>2025 <a href="https://github.com/CodePearly/JavaGameStuff/">JavaGameStuff</a>. Made by <a href="https://github.com/CodePearly/">CodePearly</a>. Code for this website found <a href="https://github.com/CodePearly/JavaGameStuff/tree/website">here on github</a></p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Download page is loaded!');
+        });
+        window.open("https://github.com/CodePearly/JavaGameStuff/releases/download/v1.0/v1.jar", "_self", "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400");
+    </script>
+</body>
+</html>

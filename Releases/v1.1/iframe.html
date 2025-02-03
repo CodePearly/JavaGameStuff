@@ -1,0 +1,30 @@
+<head>
+  <title>v1.0 - release notes</title>
+  <link rel="icon" href="../../img/version-history.svg">
+  <link rel="stylesheet" href="../vstyles.css">
+</head>
+<body>
+  <h1>v1.0</h1>
+  <hr/>
+  <h1 style="color: red;">Warning this all requires java!</h1>
+  <hr/>
+  <p>This is v1 (The v is version)</p>
+
+  <p>It is only a Pong Game</p>
+  <footer>
+    <button style="font-size:0.001%;" onclick="OpenTwoWin()">origanal md file</button>
+    <button style="font-size:0.001%;" onclick="closeAllWin()">Close all windows</button>
+
+    <script>
+    function OpenTwoWin() {
+      _blanktwo = window.open("https://github.com/CodePearly/JavaGameStuff/blob/website/Releases/v1.0/original.md?plain=0", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=710,width=700,height=400");
+      _blank = window.open("https://github.com/CodePearly/JavaGameStuff/releases/tag/v1.0", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=0,width=700,height=600");
+    }
+    function closeAllWin() {
+      _blank.close();
+      _blanktwo.close();
+    }
+
+    </script>
+  </footer>
+</body>
