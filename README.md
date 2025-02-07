@@ -1,3 +1,2 @@
 # JavaGameStuff
-<h2>This is some code for a java project with games in it</h2>
-<p>P.S Just download the installer.jar file from one of the <a href="https://github.com/CodePearly/JavaGameStuff/releases/latest">releases</a></p>
+<h2>This is Open Sourced code for <a href="https://github.com/CodePearly/JavaGameStuff/tree/main">JavaGameStuff</a> <a href="https://github.com/CodePearly/JavaGameStuff/releases/tag/v1.7">v1.7</a></h2>
