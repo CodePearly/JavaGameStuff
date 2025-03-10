@@ -15,6 +15,7 @@ import static Games.FlappyBird.com.kingyu.flappybird.util.Constant.GAME_TITLE;
 
 import java.awt.Frame;
 import java.awt.Graphics;
+import java.awt.Toolkit;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
 
@@ -52,6 +53,7 @@ public class Game extends Frame {
         setTitle(GAME_TITLE); // è®¾ç½®çª—å�£æ ‡é¢˜
         setLocation(FRAME_X, FRAME_Y); // çª—å�£åˆ�å§‹ä½�ç½®
         setResizable(false); // è®¾ç½®çª—å�£å¤§å°�ä¸�å�¯å�˜
+        setIconImage(Toolkit.getDefaultToolkit().getImage(Games.FlappyBird.com.kingyu.flappybird.app.Game.class.getResource("/Games/FlappyBird/icon/FlappyBirdIcon.png")));
         // æ·»åŠ å…³é—­çª—å�£äº‹ä»¶ï¼ˆç›‘å�¬çª—å�£å�‘ç”Ÿçš„äº‹ä»¶ï¼Œæ´¾å�‘ç»™å�‚æ•°å¯¹è±¡ï¼Œå�‚æ•°å¯¹è±¡è°ƒç”¨å¯¹åº”çš„æ–¹æ³•ï¼‰
         addWindowListener(new WindowAdapter() {
             @Override
